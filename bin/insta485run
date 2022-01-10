@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -Eeuo pipefail
+set -x
+
+rm -rf insta485/html
+
+insta485generator insta485
+
+cd insta485/html
+python3 -m http.server 8000
