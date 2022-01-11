@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--Universal requrements start-->
+
+<head>
+    <title>insta485</title>
+</head>
+
+<body>
+
+    <div>
+        <a href="/">
+            <img src="/images/logo.jpg" width="300" height="200" alt="" />
+        </a>
+    </div>
+    <div>
+        <a href="/explore/">
+            Explore
+        </a>
+    </div>
+    <div>
+        <a href="/users/{{logname}}/">
+            {{logname}}
+        </a>
+    </div>
+    <!--Universal requrements end-->
+
+    <ul>
+        {% for user in not_following %}
+        <img src="{{user.user_img_url}}" alt="" />
+        {{user.username}}
+        {% endfor %}
+
+    </ul>
+
+
+</body>
+
+</html>

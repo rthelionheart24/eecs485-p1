@@ -6,6 +6,7 @@ import shutil
 import click
 import jinja2
 
+# ! Generator needs to render all files inside /templates
 
 @click.command()
 @click.argument("INPUT_DIR")

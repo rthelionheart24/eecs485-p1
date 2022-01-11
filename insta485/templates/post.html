@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--Universal requrements start-->
+
+<head>
+    <title>insta485</title>
+</head>
+
+<body>
+
+    <div>
+        <a href="/">
+            <img src="/images/logo.jpg" width="300" height="200" alt="" />
+        </a>
+    </div>
+    <div>
+        <a href="/explore/">
+            Explore
+        </a>
+    </div>
+    <div>
+        <a href="/users/{{logname}}/">
+            {{logname}}
+        </a>
+    </div>
+    <!--Universal requrements end-->
+
+    <ul>
+        <div class="post">
+            <div class="info">
+                <div class="user">
+                    <a href="/users/{{post.owner}}/">
+                        <img src="{{post.owner_img_url}}" alt="" />
+                    </a>
+                    <p class="username">
+                        <a href="/users/{{post.owner}}/">
+                            {{post.owner}}
+                        </a>
+                    </p>
+                </div>
+                <div class="timestamp">
+                    <a href="/posts/{{post.postid}}/">
+                        {{post.timestamp}}
+                    </a>
+                </div>
+            </div>
+            <div class="image"><img src="{{post.img_url}}" alt="" /> </div>
+            <div class="likes">
+                {% if post.likes!=1 %}
+                {{post.likes}} likes
+                {% else %}
+                {{post.likes}} like
+                {% endif %}
+
+
+            </div>
+            <div class="comments">
+
+                {% for comment in post.comments %}
+                <a href="/users/{{comment.owner}}/">{{comment.owner}}
+                </a>
+                {{comment.text}}<br>
+
+                {% endfor %}
+            </div>
+        </div>
+
+    </ul>
+
+
+</body>
+
+</html>
