@@ -32,18 +32,13 @@
         {{f.username}}
 
         {% if f.logname!=logname_follows_username %}
-        {% if f.logname_follows_username == true %}
+
+        {% elif f.logname_follows_username == true %}
         following
         {% else %}
         not following
 
         {% endif %}
-
-        {% else %}
-        d
-        {% endif %}
-
-
 
         {% endfor %}
 

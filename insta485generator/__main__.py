@@ -8,6 +8,7 @@ import jinja2
 
 # ! Generator needs to render all files inside /templates
 
+
 @click.command()
 @click.argument("INPUT_DIR")
 @click.option("-o", "--output", type=click.Path(exists=False), default="html", help="Output directory.")
@@ -41,17 +42,21 @@ def main(input_dir, verbose, output):
 
     with open("{dir}/config.json".format(dir=input_dir)) as js:
         data = json.load(js)
-        context = data[0]["context"]
 
-    file_loader = jinja2.FileSystemLoader(
-        "{in_dir}/templates/".format(in_dir=input_dir))
-    env = jinja2.Environment(
-        loader=file_loader, autoescape=jinja2.select_autoescape(["html", "xml"]))
-    template = env.get_template("index.html")
-    generated = template.render(context)
+        for d in data:
+            context = d["context"]
+            file = d["template"]
 
-    with open("./{dir}/index.html".format(dir=generated_dest), "w") as f:
-        f.write(generated)
+        file_loader = jinja2.FileSystemLoader(
+            "{in_dir}/templates/".format(in_dir=input_dir))
+        env = jinja2.Environment(
+            loader=file_loader, autoescape=jinja2.select_autoescape(["html", "xml"]))
+
+        template = env.get_template(file)
+        generated = template.render(context)
+
+        with open("./{dir}/{target}".format(dir=generated_dest, target=file), "w") as f:
+            f.write(generated)
 
 
 if __name__ == '__main__':

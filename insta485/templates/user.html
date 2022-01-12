@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!--Universal requrements start-->
+
 <head>
     <title>insta485</title>
 </head>
@@ -18,33 +20,43 @@
         </a>
     </div>
     <div>
-        <a href="/users/awdeorio/">
-            User
+        <a href="/users/{{logname}}/">
+            {{logname}}
         </a>
     </div>
+    <!--Universal requrements end-->
 
-    <div class="home_username">awdeorio<br></div>
-    <div class="num_posts">2 posts</div>
-    <a href="/users/awdeorio/followers/">
-        <div class="num_followers">2 followers</div>
-    </a>
-    <a href="/users/awdeorio/following/">
-        <div class="num_following">2 following<br></div>
-    </a>
-    <div class="name">Andrew DeOrio<br></div>
 
-    <a href="/posts/1/">
-        <div class="image">
-            <img src="/uploads/122a7d27ca1d7420a1072f695d9290fad4501a41.jpg" alt="" />
-        </div>
-    </a>
+    {{ username }}
 
-    <a href="/posts/3/">
-        <div class="image">
-            <img src="/uploads/9887e06812ef434d291e4936417d125cd594b38a.jpg" alt="" />
-        </div>
-    </a>
+    {% if logname == username %}
 
+    {% elif logname_follows_username ==true %}
+    not following
+    {% endif %}
+
+    {% if total_posts==1 %}
+    {{ total_posts }} post
+    {% else %}
+    {{ total_posts }} post
+    {% endif %}
+
+    {% if followers==1 %}
+    {{ followers }} post
+    {% else %}
+    {{ followers }} posts
+    {% endif %}
+
+    {{ following }} following
+
+    {{ fullname }}
+
+    {% for post in posts %}
+
+    <a href="/posts/{{post.postid}}"><img src="{{post.img_url}} " alt="" />
+    </a>
+    {% endfor %}
+    
 </body>
 
 </html>

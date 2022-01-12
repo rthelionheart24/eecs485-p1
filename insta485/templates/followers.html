@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--Universal requrements start-->
+
+<head>
+    <title>insta485</title>
+</head>
+
+<body>
+
+    <div>
+        <a href="/">
+            <img src="/images/logo.jpg" width="300" height="200" alt="" />
+        </a>
+    </div>
+    <div>
+        <a href="/explore/">
+            Explore
+        </a>
+    </div>
+    <div>
+        <a href="/users/{{logname}}/">
+            {{logname}}
+        </a>
+    </div>
+    <!--Universal requrements end-->
+
+    <ul>
+        {% for f in followers %}
+        <img src="{{f.user_img_url}}" alt="" />
+        {{f.username}}
+
+        {% if f.logname!=logname_follows_username %}
+
+        {% elif f.logname_follows_username == true %}
+        following
+        {% else %}
+        not following
+
+        {% endif %}
+
+        {% endfor %}
+
+
+    </ul>
+
+
+</body>
+
+</html>
