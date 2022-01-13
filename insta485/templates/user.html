@@ -30,33 +30,40 @@
     {{ username }}
 
     {% if logname == username %}
-
     {% elif logname_follows_username ==true %}
-    not following
+    not following<br>
+    {%else %}
+    following<br>
     {% endif %}
 
     {% if total_posts==1 %}
-    {{ total_posts }} post
+    {{ total_posts }} post<br>
     {% else %}
-    {{ total_posts }} post
+    {{ total_posts }} post<br>
     {% endif %}
 
     {% if followers==1 %}
-    {{ followers }} post
+    <a href src="/users/{{username}}/followers/">
+        {{ followers }} follower
+    </a>
     {% else %}
-    {{ followers }} posts
+    <a href src="/users/{{username}}/followers/">
+        {{ followers }} followers
+    </a>
     {% endif %}
 
-    {{ following }} following
+    <a href src="/users/{{username}}/following/">
+        {{ following }} following
+    </a>
 
-    {{ fullname }}
+    {{ fullname }}<br>
 
     {% for post in posts %}
 
     <a href="/posts/{{post.postid}}"><img src="{{post.img_url}} " alt="" />
     </a>
     {% endfor %}
-    
+
 </body>
 
 </html>

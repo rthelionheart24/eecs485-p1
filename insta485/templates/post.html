@@ -20,53 +20,51 @@
         </a>
     </div>
     <div>
-        <a href="/users/{{logname}}/">
+        <a href="/users/{}/".format(logname)>
             {{logname}}
         </a>
     </div>
     <!--Universal requrements end-->
 
-    <ul>
-        <div class="post">
-            <div class="info">
-                <div class="user">
-                    <a href="/users/{{post.owner}}/">
-                        <img src="{{post.owner_img_url}}" alt="" />
-                    </a>
-                    <p class="username">
-                        <a href="/users/{{post.owner}}/">
-                            {{post.owner}}
-                        </a>
-                    </p>
-                </div>
-                <div class="timestamp">
-                    <a href="/posts/{{post.postid}}/">
-                        {{post.timestamp}}
-                    </a>
-                </div>
-            </div>
-            <div class="image"><img src="{{post.img_url}}" alt="" /> </div>
-            <div class="likes">
-                {% if post.likes!=1 %}
-                {{post.likes}} likes
-                {% else %}
-                {{post.likes}} like
-                {% endif %}
-
-
-            </div>
-            <div class="comments">
-
-                {% for comment in post.comments %}
-                <a href="/users/{{comment.owner}}/">{{comment.owner}}
+    <div class="post">
+        <div class="info">
+            <div class="user">
+                <a href="/users/{{owner}}/">
+                    <img src="{{owner_img_url}}" alt="" />
                 </a>
-                {{comment.text}}<br>
-
-                {% endfor %}
+                <p class="username">
+                    <a href="/users/{{owner}}/">
+                        {{owner}}<br>
+                    </a>
+                </p>
+            </div>
+            <div class="timestamp">
+                <a href="/posts/{{postid}}/">
+                    {{timestamp}}<br>
+                </a>
             </div>
         </div>
+        <div class="image"><img src="{{img_url}}" alt="" /> </div>
+        <div class="likes">
+            {% if likes!=1 %}
+            {{likes}} likes<br>
+            {% else %}
+            {{likes}} like<br>
+            {% endif %}
 
-    </ul>
+
+        </div>
+        <div class="comments">
+
+            {% for comment in comments %}
+            <a href="/users/{{comment.owner}}/">{{comment.owner}}
+            </a>
+            {{comment.text}}<br>
+
+            {% endfor %}
+        </div>
+    </div>
+
 
 
 </body>

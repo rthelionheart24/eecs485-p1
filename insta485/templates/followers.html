@@ -26,24 +26,23 @@
     </div>
     <!--Universal requrements end-->
 
-    <ul>
-        {% for f in followers %}
-        <img src="{{f.user_img_url}}" alt="" />
-        {{f.username}}
+    {% for f in followers %}
+    <img src="{{f.user_img_url}}" alt="" />
 
-        {% if f.logname!=logname_follows_username %}
+    <a href="/users/{{f.username}}/">
+        {{f.username}}<br>
+    </a>
 
-        {% elif f.logname_follows_username == true %}
-        following
-        {% else %}
-        not following
+    {% if logname==f.username %}
+    
+    {% elif f.logname_follows_username == true %}
+    following<br>
+    {% else %}
+    not following<br>
 
-        {% endif %}
+    {% endif %}
 
-        {% endfor %}
-
-
-    </ul>
+    {% endfor %}
 
 
 </body>

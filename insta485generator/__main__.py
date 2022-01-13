@@ -45,18 +45,23 @@ def main(input_dir, verbose, output):
 
         for d in data:
             context = d["context"]
-            file = d["template"]
+            template_name = d["template"]
+            url = d["url"]
 
-        file_loader = jinja2.FileSystemLoader(
-            "{in_dir}/templates/".format(in_dir=input_dir))
-        env = jinja2.Environment(
-            loader=file_loader, autoescape=jinja2.select_autoescape(["html", "xml"]))
+            file_loader = jinja2.FileSystemLoader(
+                "{in_dir}/templates/".format(in_dir=input_dir))
+            env = jinja2.Environment(
+                loader=file_loader, autoescape=jinja2.select_autoescape(["html", "xml"]))
 
-        template = env.get_template(file)
-        generated = template.render(context)
+            template = env.get_template(template_name)
+            generated = template.render(context)
 
-        with open("./{dir}/{target}".format(dir=generated_dest, target=file), "w") as f:
-            f.write(generated)
+            if not os.path.exists("{dir}{path}".format(dir=generated_dest, path=url)):
+                os.makedirs(
+                    "{dir}{path}".format(dir=generated_dest, path=url))
+
+            with open("{dir}{path}/index.html".format(dir=generated_dest, path=url), "w") as f:
+                f.write(generated)
 
 
 if __name__ == '__main__':
