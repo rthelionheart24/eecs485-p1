@@ -9,21 +9,16 @@
 
 <body>
 
-    <div>
-        <a href="/">
-            <img src="/images/logo.jpg" width="300" height="200" alt="" />
-        </a>
-    </div>
-    <div>
-        <a href="/explore/">
-            Explore
-        </a>
-    </div>
-    <div>
-        <a href="/users/{{logname}}/">
-            {{logname}}
-        </a>
-    </div>
+
+    <a href="/">
+        <img src="/images/logo.jpg" width="300" height="200" alt="" />
+    </a>
+    <a href="/explore/">
+        Explore
+    </a>
+    <a href="/users/{{logname}}/">
+        {{logname}}
+    </a>
     <!--Universal requrements end-->
 
 
@@ -43,16 +38,16 @@
     {% endif %}
 
     {% if followers==1 %}
-    <a href src="/users/{{username}}/followers/">
+    <a href="/users/{{username}}/followers/">
         {{ followers }} follower
     </a>
     {% else %}
-    <a href src="/users/{{username}}/followers/">
+    <a href="/users/{{username}}/followers/">
         {{ followers }} followers
     </a>
     {% endif %}
 
-    <a href src="/users/{{username}}/following/">
+    <a href="/users/{{username}}/following/">
         {{ following }} following
     </a>
 
